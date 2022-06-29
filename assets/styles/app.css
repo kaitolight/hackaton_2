@@ -1,7 +1,6 @@
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+* {
+  box-sizing: border-box; 
+  margin: 0; 
 }
 
 .hello {
@@ -9,11 +8,5 @@ body {
   font-size: 15em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+@import url('https://fonts.google.com/specimen/Montserrat?query=Montserrat#standard-styles');
+@import url('https://fonts.google.com/specimen/Hind?query=Hind')
