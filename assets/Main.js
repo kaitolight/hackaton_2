@@ -9,6 +9,7 @@ function Main() {
       <Routes>
         <Route exact path="/" element={<HelloWorld />} />
       </Routes>
+      <div>hola</div>
     </Router>
   )
 }
