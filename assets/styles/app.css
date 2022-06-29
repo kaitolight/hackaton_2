@@ -3,10 +3,5 @@
   margin: 0; 
 }
 
-.hello {
-  animation: App-logo-spin infinite 15s linear;
-  font-size: 15em;
-}
-
 @import url('https://fonts.google.com/specimen/Montserrat?query=Montserrat#standard-styles');
 @import url('https://fonts.google.com/specimen/Hind?query=Hind')
