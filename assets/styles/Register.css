@@ -1,0 +1,64 @@
+.register-flex {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e79759;
+}
+
+.signup-form {
+    width: 35%; 
+    height: auto; 
+    background-color: #183650; 
+}
+
+.title-signup {
+    color: #e79759; 
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.register-first-p {
+    color: #e79759; 
+    font-size: 2rem;
+    font-family: "Hind", sans-serif;
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.register-p {
+    color: #e79759; 
+    font-size: 2rem;
+    font-family: "Hind", sans-serif;
+    padding-left: 2rem;
+    padding-top: 1rem;
+}
+
+.register-input {
+    border: none; 
+    border-bottom: 1.5px solid #e79759;
+    background-color: #183650;
+    color: #e79759;
+    margin-left: 2rem; 
+    margin-top: 1rem; 
+    width: 70%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: #e79759;
+}
+
+.register-checkbox {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
