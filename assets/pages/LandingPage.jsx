@@ -9,6 +9,10 @@ function LandingPage() {
     navigate("/register");
   };
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="container-flex">
@@ -22,7 +26,9 @@ function LandingPage() {
             </div>
             <div className="second-container-landing">
               <p className="container-title">Already registered?</p>
-              <button className="container-button">Please login!</button>
+              <button className="container-button" onClick={handleLogin}>
+                Please login!
+              </button>
             </div>
           </div>
         </div>
