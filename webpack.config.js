@@ -1,9 +1,9 @@
-const Encore = require("@symfony/webpack-encore")
+const Encore = require("@symfony/webpack-encore");
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
-  Encore.configureRuntimeEnvironment(process.env.NODE_ENV || "dev")
+  Encore.configureRuntimeEnvironment(process.env.NODE_ENV || "dev");
 }
 
 Encore
@@ -46,14 +46,14 @@ Encore
   .enableVersioning(Encore.isProduction())
 
   .configureBabel((config) => {
-    config.plugins.push("@babel/plugin-proposal-class-properties")
-    config.plugins.push("@babel/plugin-syntax-jsx")
+    config.plugins.push("@babel/plugin-proposal-class-properties");
+    config.plugins.push("@babel/plugin-syntax-jsx");
   })
 
   // enables @babel/preset-env polyfills
   .configureBabelPresetEnv((config) => {
-    config.useBuiltIns = "usage"
-    config.corejs = 3
+    config.useBuiltIns = "usage";
+    config.corejs = 3;
   })
 
   // enables Sass/SCSS support
@@ -63,7 +63,7 @@ Encore
   //.enableTypeScriptLoader()
 
   // uncomment if you use React
-  .enableReactPreset()
+  .enableReactPreset();
 // uncomment to get integrity="..." attributes on your script & link tags
 // requires WebpackEncoreBundle 1.4 or higher
 //.enableIntegrityHashes(Encore.isProduction())
@@ -71,7 +71,7 @@ Encore
 // uncomment if you're having problems with a jQuery plugin
 //.autoProvidejQuery()
 
-const fullConfig = Encore.getWebpackConfig()
+const fullConfig = Encore.getWebpackConfig();
 fullConfig.devServer = {
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -82,5 +82,5 @@ fullConfig.devServer = {
   watchFiles: {
     paths: ["templates/**/*.html.twig"],
   },
-}
-module.exports = fullConfig
+};
+module.exports = fullConfig;
