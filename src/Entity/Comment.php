@@ -18,6 +18,14 @@ class Comment
     #[ORM\Column(type: 'text')]
     private $message;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $project;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -31,6 +39,30 @@ class Comment
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        $this->project = $project;
 
         return $this;
     }
