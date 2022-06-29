@@ -1,8 +1,8 @@
 import React from "react"
 import UserInfo from "../components/UserInfo/UserInfo"
 
-function HelloWorld() {
+function Tests() {
   return <div className="hello"><UserInfo /></div>
 }
 
-export default HelloWorld
+export default Tests
