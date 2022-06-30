@@ -80,3 +80,10 @@
 .filter-input::placeholder {
     color: var(--color-1);
 }
+
+.feed-project-container {
+    width: 90%; 
+    height: auto; 
+    background-color: var(--color-2);
+    margin-bottom: 1rem;
+}

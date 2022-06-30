@@ -131,7 +131,7 @@ function FilterProjects() {
                     elem.author.includes(words)
                 )
                 .map((data) => (
-                  <div className="feed-container" key={data.id}>
+                  <div className="feed-project-container" key={data.id}>
                     <div className="feed-flex">
                       <img
                         src={Person}
