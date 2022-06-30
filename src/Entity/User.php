@@ -2,53 +2,43 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 155)]
-    private $firstname;
-
-    #[ORM\Column(type: 'string', length: 155)]
-    private $lastname;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $mail;
-
-    #[ORM\Column(type: 'string', length: 155)]
-    private $password;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $position;
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private $email;
 
     #[ORM\Column(type: 'json')]
-    private $role = [];
+    private $roles = [];
+
+    #[ORM\Column(type: 'string')]
+    private $password;
+
+    #[ORM\ManyToOne(targetEntity: Agency::class, inversedBy: 'users')]
+    private $agency;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
+    private $comment;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Project::class)]
     private $projects;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
-    private $comments;
-
-    #[ORM\ManyToOne(targetEntity: Agency::class, inversedBy: 'users')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $agency;
-
     public function __construct()
     {
+        $this->comment = new ArrayCollection();
         $this->projects = new ArrayCollection();
-        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,43 +46,59 @@ class User
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getEmail(): ?string
     {
-        return $this->firstname;
+        return $this->email;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setEmail(string $email): self
     {
-        $this->firstname = $firstname;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->lastname;
+        return (string) $this->email;
     }
 
-    public function setLastname(string $lastname): self
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        $this->lastname = $lastname;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    public function setMail(string $mail): self
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -104,26 +110,64 @@ class User
         return $this;
     }
 
-    public function getPosition(): ?string
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->position;
+        return null;
     }
 
-    public function setPosition(string $position): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->position = $position;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getAgency(): ?Agency
+    {
+        return $this->agency;
+    }
+
+    public function setAgency(?Agency $agency): self
+    {
+        $this->agency = $agency;
 
         return $this;
     }
 
-    public function getRole(): ?array
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComment(): Collection
     {
-        return $this->role;
+        return $this->comment;
     }
 
-    public function setRole(array $role): self
+    public function addComment(Comment $comment): self
     {
-        $this->role = $role;
+        if (!$this->comment->contains($comment)) {
+            $this->comment[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comment->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
 
         return $this;
     }
@@ -154,48 +198,6 @@ class User
                 $project->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Comment>
-     */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): self
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): self
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getAgency(): ?Agency
-    {
-        return $this->agency;
-    }
-
-    public function setAgency(?Agency $agency): self
-    {
-        $this->agency = $agency;
 
         return $this;
     }
