@@ -27,7 +27,7 @@ class UserFixtures extends Fixture
         $admin->setPosition('Tech lead');
         $admin->setPassword($this->passwordHasher->hashPassword($admin, 'password'));
         $admin->setAgency($this->getReference('agency_Bordeaux'));
-        // $this->addReference('user_', $admin);
+        //$this->addReference('user_1', $admin);
         //$this->addReference('user_' . $admin['user']);
         $manager->persist($admin);
         $manager->flush();
@@ -39,6 +39,7 @@ class UserFixtures extends Fixture
         $user->setPosition('Product owner');
         $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
         $user->setAgency($this->getReference('agency_Nice'));
+        //$this->addReference('user_2', $user);
         $manager->persist($user);
         $manager->flush();
     }
