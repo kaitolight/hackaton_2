@@ -47,6 +47,48 @@ function FeedRSS() {
     },
   ]);
 
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      project_id: 1,
+      author: "Anthony Gorsky",
+      message: "This is a great project! I'd love to take part of it. :)",
+    },
+    {
+      id: 2,
+      porject_id: 1,
+      author: "Julien Richard",
+      message:
+        "Seems like a legit project that could tremendously help the company. Count me in!",
+    },
+    {
+      id: 3,
+      project_id: 2,
+      author: "Loris Chastanet",
+      message:
+        "I really like your project and 3D animations in general. Making 3D animations accessible to everyone is important to me.",
+    },
+    {
+      id: 4,
+      project_id: 2,
+      authord: "Jean-François Morin",
+      message:
+        "I wholeheartedly agree with Loris, and I'd like to bring my expertise on the subject.",
+    },
+    {
+      id: 5,
+      project_id: 4,
+      author: "Romain Guillemot",
+      message:
+        "Very impressive for an app coded over the weekend. I'm really interested to see your code.",
+    },
+  ]);
+  const [commentList, setCommentList] = useState([]);
+
+  const handleComments = (item) => {
+    comments.find((comment) => setCommentList(comment.project_id === item.id));
+  };
+
   return (
     <>
       <div className="feed-outer-flex">
@@ -69,6 +111,7 @@ function FeedRSS() {
                 <p className="desc-text">{data.desc}</p>
               </div>
             </div>
+            <button onClick={() => handleComments(data)}>View comments</button>
           </div>
         ))}
       </div>
