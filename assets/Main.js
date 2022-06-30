@@ -19,6 +19,7 @@ function Main() {
         <Route path="/test" element={<FilterProjects />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/tests" element={<Tests />} />
+        <Route path="/testo" element={<FeedRSS />} />
       </Routes>
     </Router>
   );

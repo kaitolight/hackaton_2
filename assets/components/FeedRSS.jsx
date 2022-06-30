@@ -41,23 +41,25 @@ function FeedRSS() {
 
   return (
     <>
-      {fake.map((data) => (
-        <div className="filter-container" key={data.id}>
-          <div className="filter-flex">
-            <img src={Person} alt={data.author} className="filter-img" />
-            <h2 className="filter-title">{data.author}</h2>
-            <div className="flex-category">
-              <h2 className="filter-title">{data.category}</h2>
+      <div className="feed-outer-flex">
+        {fake.map((data) => (
+          <div className="feed-container" key={data.id}>
+            <div className="feed-flex">
+              <img src={Person} alt={data.author} className="feed-img" />
+              <h2 className="feed-title">{data.author}</h2>
+              <div className="flex-category">
+                <h2 className="feed-title">{data.category}</h2>
+              </div>
+            </div>
+            <div className="flex-desc">
+              <div className="feed-desc">
+                <h2 className="desc-title">{data.title}</h2>
+                <p className="desc-text">{data.desc}</p>
+              </div>
             </div>
           </div>
-          <div className="flex-desc">
-            <div className="filter-desc">
-              <h2 className="desc-title">{data.title}</h2>
-              <p className="desc-text">{data.desc}</p>
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 }

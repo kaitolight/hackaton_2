@@ -1,14 +1,18 @@
 .filter-page {
     height: 100vh;
-    display: flex; 
+    overflow: hidden;
 }
 
 .filter-desc {
     margin-left: 20%; 
     width: 80%;
     height: 100vh; 
-    display: flex;
-     justify-content: center;
+}
+
+.filter-flex {
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
 }
 
 .filter-top-flex {
@@ -16,12 +20,32 @@
     width: 100%; 
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    justify-content: space-around;
+
+}
+
+.filter-bottom-flex {
+    display: flex; 
+    width: 100%; 
+    margin-left: 2.3rem;
+    margin-bottom: 2rem;
     justify-content: space-around;
 }
 
 .flex-top-container {
-    width: 20%; 
+    width: 22%; 
     height: 150px; 
     background-color: var(--color-2);
 }
 
+.flex-bottom-container {
+    width: 30%; 
+    height: 200px; 
+    background-color: var(--color-1)
+}
+
+.flex-component-container {
+    width: 100%; 
+}
