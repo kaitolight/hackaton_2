@@ -1,0 +1,30 @@
+#navContainer{
+    background-color: var(--color-2);
+    width: 20%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100vh;
+    position:fixed;
+}
+#navContainer .buttonHome{
+    margin-top: 3rem;
+    color:var(--color-3);
+}
+
+#navContainer .othersButtonsContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+    height:60%;
+    margin-bottom: 5rem;
+    color:var(--color-3);
+}
+#navContainer .othersButtons{
+    color:var(--color-3);
+    text-align:center;
+}
+#navContainer .othersButtons:hover, #navContainer .buttonHome:hover{
+    color:var(--color-4);
+}

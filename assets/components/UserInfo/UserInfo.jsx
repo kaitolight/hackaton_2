@@ -43,7 +43,7 @@ function UserInfo() {
   if (goToParams) {
     return (
       <div id="userInfoContainer">
-        <button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button>
+        <div className="containerButton"><button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button></div>
         <span><img src={person} /></span>
         <div className="textInfoUser">
           <strong>{user.name} {user.lastname}</strong>
@@ -55,7 +55,7 @@ function UserInfo() {
   }
   return (
     <div id="userInfoContainer">
-      <button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button>
+      <div className="containerButton"><button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button></div>
       <span><img src={person} /></span>
       <form className="formParamsInfoUser" onSubmit={handleLogin}>
         <input className="inputInfoUser" name="name" placeholder={user.name} onChange={handleChange} />
