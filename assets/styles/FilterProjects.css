@@ -1,6 +1,6 @@
 .filter-page {
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .filter-desc {
@@ -41,11 +41,42 @@
 }
 
 .flex-bottom-container {
-    width: 30%; 
+    width: 28.5%; 
     height: 200px; 
-    background-color: var(--color-1)
+    background-color: var(--color-2)
 }
 
 .flex-component-container {
     width: 100%; 
+}
+
+.filter-title {
+    font-weight: bold; 
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-3); 
+    padding: 1rem;
+}
+
+.filter-input {
+    width: 70%; 
+    margin: 1rem;
+    border: none; 
+    border-bottom: 1.5px solid #183650; 
+    background-color: #e79759;
+    color: var(--color-3);
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.filter-select {
+    width: 70%; 
+    margin: 1rem;
+}
+
+.filter-input:focus {
+    outline: none;
+}
+
+.filter-input::placeholder {
+    color: var(--color-1);
 }
