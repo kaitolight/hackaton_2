@@ -1,0 +1,60 @@
+@font-face {
+    font-family: Hind-Bold;
+    src: url("./fonts/Hind-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Hind-Light;
+    src: url("./fonts/Hind-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Hind-Medium;
+    src: url("./fonts/Hind-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Hind-Regular;
+    src: url("./fonts/Hind-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Hind-SemiBold;
+    src: url("./fonts/Hind-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: Montserrat-Italic;
+    src: url("./fonts/Montserrat-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url("./fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+:root {
+    --color-1: #183650;
+    --color-1-hover: #0A1E30;
+    --color-2: #e79759;
+    --color-2-hover: #E77620;
+    --color-3: #f0f0f0;
+    --color-3-hover: #787878;
+    --color-4: #464646;
+    --color-dark: #000000;
+    --color-light: #ffffff;
+    --font-size-h1: 3.5rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 2.2rem;
+    --font-size-p: 1rem;
+    --font-family-p: Hind-Regular;
+    --font-family-titles: Montserrat;    
+    --border-radius: 5px;
+    --transition: all 400ms ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: var(--font-family-p);
+}
