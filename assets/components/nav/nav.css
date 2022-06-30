@@ -8,8 +8,12 @@
     position:fixed;
 }
 #navContainer .buttonHome{
-    margin-top: 3rem;
+    margin-top: 5rem;
     color:var(--color-3);
+    background-color: var(--color-1);
+    padding-top: 0.25rem;
+    width:75%;
+    text-align:center;
 }
 
 #navContainer .othersButtonsContainer{
@@ -24,7 +28,10 @@
 #navContainer .othersButtons{
     color:var(--color-3);
     text-align:center;
+    background-color: var(--color-1);
+    padding-top: 0.25rem;
+    width:115%;
 }
 #navContainer .othersButtons:hover, #navContainer .buttonHome:hover{
-    color:var(--color-4);
+    color:var(--color-2);
 }
