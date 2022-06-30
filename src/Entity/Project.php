@@ -32,9 +32,6 @@ class Project
     #[ORM\Column(type: 'integer')]
     private $status;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
-    private $user;
-
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
@@ -45,6 +42,9 @@ class Project
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Comment::class)]
     private $comments;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
+    private $user;
 
     public function __construct()
     {
@@ -116,18 +116,6 @@ class Project
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -178,6 +166,18 @@ class Project
                 $comment->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
