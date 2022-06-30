@@ -21,7 +21,7 @@ function Login() {
       <div className="login-flex">
         <div className="signup-form">
           <form onSubmit={handleDefault}>
-            <h1 className="title-login">Formulaire d'inscription</h1>
+            <h1 className="title-login">Formulaire de connexion</h1>
             <p className="login-first-p">► Email</p>
             <input
               placeholder="Your email"
