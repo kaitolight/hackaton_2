@@ -1,16 +1,11 @@
-.register-flex {
+.login-flex {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #e79759;
 }
 
-.signup-form {
-    height: auto; 
-    background-color: #183650; 
-}
-
-.title-signup {
+.title-login {
     color: #e79759; 
     font-family: "Montserrat", sans-serif;
     font-size: 3rem;
@@ -19,7 +14,7 @@
     padding-top: 1rem;
 }
 
-.register-first-p {
+.login-first-p {
     color: #e79759; 
     font-size: 2rem;
     font-family: "Hind", sans-serif;
@@ -27,7 +22,7 @@
     padding-top: 2rem;
 }
 
-.register-p {
+.login-p {
     color: #e79759; 
     font-size: 2rem;
     font-family: "Hind", sans-serif;
@@ -35,7 +30,7 @@
     padding-top: 1rem;
 }
 
-.register-input {
+.login-input {
     border: none; 
     border-bottom: 1.5px solid #e79759;
     background-color: #183650;
@@ -55,17 +50,12 @@ input:focus {
     color: #e79759;
 }
 
-.register-checkbox {
-    margin-left: 2rem;
-    margin-top: 1rem;
-}
-
 .button-flex {
     display: flex; 
     justify-content: center;
 }
 
-.register-button {
+.login-button {
     background: #e79759;
     cursor: pointer;
     border: none;
@@ -75,27 +65,28 @@ input:focus {
     font-family: 'Hind', sans-serif;
     color:  #183650;
     margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 
 @media (max-width: 575.98px) {
-    .signup-form {
+    .login-form {
         width: 95%;
     }
 }
 
 @media (min-width: 768px) {
-    .signup-form {
+    .login-form {
         width: 90%
     }
 
-    .register-flex {
+    .login-flex {
         height: 100vh;
     }
 }
 
 @media (min-width: 1200px) {
-    .signup-form {
+    .login-form {
         width: 35%;
     }
 }

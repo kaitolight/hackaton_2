@@ -10,6 +10,9 @@ function Register() {
   const [job, setJob] = useState("");
   const [working, setWorking] = useState(false);
 
+  const handleDefault = (e) => {
+    e.preventDefault();
+  };
   const handleFirstname = (e) => {
     setFirstname(e.target.value);
   };
@@ -36,57 +39,62 @@ function Register() {
     <>
       <div className="register-flex">
         <div className="signup-form">
-          <h1 className="title-signup">Formulaire d'inscription</h1>
-          <p className="register-first-p">► Firstname</p>
-          <input
-            placeholder="Your firstname"
-            className="register-input"
-            value={firstname}
-            onChange={handleFirstname}
-          />
-          <p className="register-p">► Lastname</p>
-          <input
-            placeholder="Your lastname"
-            className="register-input"
-            value={lastname}
-            onChange={handleLastname}
-          />
-          <p className="register-p">► Email address</p>
-          <input
-            placeholder="Your email address"
-            className="register-input"
-            value={email}
-            onChange={handleEmail}
-          />
-          <p className="register-p">► Password</p>
-          <input
-            placeholder="Your password"
-            className="register-input"
-            type="password"
-            value={password}
-            onChange={handlePassword}
-          />
-          <p className="register-p">► Affiliated agency</p>
-          <input
-            placeholder="Your agency"
-            className="register-input"
-            value={agency}
-            onChange={handleAgency}
-          />
-          <p className="register-p">► Job</p>
-          <input
-            placeholder="Your job"
-            className="register-input"
-            value={job}
-            onChange={handleJob}
-          />
-          <p className="register-p">► Are you currently working?</p>
-          <input
-            type="checkbox"
-            className="register-checkbox"
-            value={working}
-            onChange={handleWorking}
-          />
+          <form onSubmit={handleDefault}>
+            <h1 className="title-signup">Formulaire d'inscription</h1>
+            <p className="register-first-p">► Firstname</p>
+            <input
+              placeholder="Your firstname"
+              className="register-input"
+              value={firstname}
+              onChange={handleFirstname}
+            />
+            <p className="register-p">► Lastname</p>
+            <input
+              placeholder="Your lastname"
+              className="register-input"
+              value={lastname}
+              onChange={handleLastname}
+            />
+            <p className="register-p">► Email address</p>
+            <input
+              placeholder="Your email address"
+              className="register-input"
+              value={email}
+              onChange={handleEmail}
+            />
+            <p className="register-p">► Password</p>
+            <input
+              placeholder="Your password"
+              className="register-input"
+              type="password"
+              value={password}
+              onChange={handlePassword}
+            />
+            <p className="register-p">► Affiliated agency</p>
+            <input
+              placeholder="Your agency"
+              className="register-input"
+              value={agency}
+              onChange={handleAgency}
+            />
+            <p className="register-p">► Job</p>
+            <input
+              placeholder="Your job"
+              className="register-input"
+              value={job}
+              onChange={handleJob}
+            />
+            <p className="register-p">► Are you currently working?</p>
+            <input
+              type="checkbox"
+              className="register-checkbox"
+              value={working}
+              onChange={handleWorking}
+            />
+            <div className="button-flex">
+              <button className="register-button">Login</button>
+            </div>
+          </form>
         </div>
       </div>
     </>
