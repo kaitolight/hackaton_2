@@ -2,48 +2,59 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ProjectRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    formats: ['json'],
+    normalizationContext: ['groups' => 'read:project']
+)]
 class Project
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:project', 'get:user'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 155)]
+    #[Groups(['read:project', 'get:user'])]
     private $name;
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['read:project', 'get:user'])]
     private $description;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(['read:project', 'get:user'])]
     private $createdAt;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $endedAt;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
+    #[Groups(['read:project', 'get:user'])]
     private $category;
 
     #[ORM\ManyToOne(targetEntity: Agency::class, inversedBy: 'projects')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
+    #[Groups(['read:project', 'get:user'])]
     private $agency;
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Comment::class)]
     private $comments;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
+    #[Groups(['read:project'])]
     private $user;
 
     public function __construct()
