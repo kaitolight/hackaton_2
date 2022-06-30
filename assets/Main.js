@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import FeedRSS from "./components/FeedRSS";
 import Tests from "./pages/Tests";
 import UserDashboard from "./pages/userDashboard/UserDashboard";
+import FilterProjects from "./pages/FilterProjects";
 
 function Main() {
   return (
@@ -15,7 +16,7 @@ function Main() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<FeedRSS />} />
+        <Route path="/test" element={<FilterProjects />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/tests" element={<Tests />} />
       </Routes>

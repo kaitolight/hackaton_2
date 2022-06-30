@@ -1,0 +1,27 @@
+.filter-page {
+    height: 100vh;
+    display: flex; 
+}
+
+.filter-desc {
+    margin-left: 20%; 
+    width: 80%;
+    height: 100vh; 
+    display: flex;
+     justify-content: center;
+}
+
+.filter-top-flex {
+    display: flex; 
+    width: 100%; 
+    margin-left: 1rem;
+    margin-right: 1rem;
+    justify-content: space-around;
+}
+
+.flex-top-container {
+    width: 20%; 
+    height: 150px; 
+    background-color: var(--color-2);
+}
+
