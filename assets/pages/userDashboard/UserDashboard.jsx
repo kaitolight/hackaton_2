@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import "./userDashboard.css";
 import Nav from "../../components/nav/Nav";
+import FeedRSS from "../../components/FeedRSS"
 
 function UserDashboard() {
   const [projets, setProjets] = useState([{
@@ -47,9 +48,9 @@ function UserDashboard() {
     <div id="userDashboardContainer">
       <Nav />
       <div className="allProjetsContainer">
-        {projets.map((projet) => 
-        <p>{projet.name}</p>
-        )}
+        <FeedRSS />
+      </div>
+      <div className="viewProjet">
       </div>
     </div>
   );
