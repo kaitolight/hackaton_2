@@ -12,13 +12,13 @@ function Nav() {
       <UserInfo />
       <div className="othersButtonsContainer">
       <Link to="/UserDashboard" className="othersButtons">
-        <h1>MY PROJETS</h1>
+        <h1>MY PROJECTS</h1>
       </Link>
       <Link to="/UserDashboard" className="othersButtons">
-        <h1>SEARCH A PROJET</h1>
+        <h1>SEARCH A PROJECT</h1>
       </Link>
-      <Link to="/UserDashboard" className="othersButtons">
-        <h1>CREATE A PROJET</h1>
+      <Link to="/createProjet" className="othersButtons">
+        <h1>CREATE A PROJECT</h1>
       </Link>
       </div>
       <p>Made with 🧡 by _'s team </p>

@@ -90,4 +90,5 @@
     background-color: var(--color-3);
     border: 1px solid var(--color-1);
     padding: 0 0.5rem;
+    cursor:pointer;
 }

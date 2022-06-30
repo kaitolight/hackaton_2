@@ -47,11 +47,11 @@
     font-size: 0.9rem;
 }
 
-input:focus {
+.register-input:focus {
     outline: none;
 }
 
-::placeholder {
+.register-input::placeholder {
     color: #e79759;
 }
 
