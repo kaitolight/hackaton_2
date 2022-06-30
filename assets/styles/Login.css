@@ -43,11 +43,11 @@
     font-size: 0.9rem;
 }
 
-input:focus {
+.login-input:focus {
     outline: none;
 }
 
-::placeholder {
+.login-input::placeholder {
     color: var(--color-2);
 }
 
