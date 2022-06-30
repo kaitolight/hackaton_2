@@ -1,25 +1,33 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HelloWorld from "./pages/HelloWorld"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Tests from "./pages/Tests";
+import UserDashboard from "./pages/userDashboard/UserDashboard";
 
 function Main() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<HelloWorld />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/userDashboard" element={<UserDashboard />} />
+        <Route path="/tests" element={<Tests />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default Main
+export default Main;
 
 if (document.getElementById("app")) {
-  const root = ReactDOM.createRoot(document.getElementById("app"))
+  const root = ReactDOM.createRoot(document.getElementById("app"));
   root.render(
     <React.StrictMode>
       <Main />
     </React.StrictMode>
-  )
+  );
 }
