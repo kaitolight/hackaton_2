@@ -2,19 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ApiResource(
+    formats: ['json'],
+    normalizationContext: ['groups' => 'get:user']
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:project'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -27,19 +34,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['get:user'])]
     private string $firstName;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['get:user'])]
     private string $lastName;
 
     #[ORM\ManyToOne(targetEntity: Agency::class, inversedBy: 'users')]
+    #[Groups(['get:user'])]
     private $agency;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
+    #[Groups(['read:project'])]
     private $comment;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Project::class)]
     private $projects;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    
+    #[Groups(['get:user'])]
+    private $position;
 
     public function __construct()
     {
@@ -244,6 +260,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName($lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getPosition(): ?string
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?string $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }
