@@ -1,5 +1,4 @@
 .register-flex {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +6,6 @@
 }
 
 .signup-form {
-    width: 35%; 
     height: auto; 
     background-color: #183650; 
 }
@@ -61,4 +59,26 @@ input:focus {
     margin-left: 2rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 575.98px) {
+    .signup-form {
+        width: 95%;
+    }
+}
+
+@media (min-width: 768px) {
+    .signup-form {
+        width: 90%
+    }
+
+    .register-flex {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 1200px) {
+    .signup-form {
+        width: 35%;
+    }
 }
