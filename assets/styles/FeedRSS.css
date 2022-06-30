@@ -5,7 +5,7 @@
 }
 
 .feed-container {
-    width: 100%; 
+    width: 90%; 
     height: auto; 
     background-color: var(--color-2);
     margin-bottom: 1rem;
@@ -30,7 +30,8 @@
     font-family: "Montserrat", sans-serif;
     color: var(--color-3);
     margin-top: 3.5rem;
-    width: 35%;
+    width: 100%;
+    padding-right: 1rem;
 }
 
 .flex-category {
@@ -57,7 +58,7 @@
     font-weight: bold; 
     font-family: "Montserrat", sans-serif;
     color: var(--color-3);
-    width: 50%;
+    width: 100%;
 }
 
 .desc-text {
