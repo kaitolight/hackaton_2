@@ -50,9 +50,11 @@ function FeedRSS() {
               <h2 className="filter-title">{data.category}</h2>
             </div>
           </div>
-          <div className="filter-desc">
-            <h2 className="desc-title">{data.title}</h2>
-            <p className="desc-text">{data.desc}</p>
+          <div className="flex-desc">
+            <div className="filter-desc">
+              <h2 className="desc-title">{data.title}</h2>
+              <p className="desc-text">{data.desc}</p>
+            </div>
           </div>
         </div>
       ))}
