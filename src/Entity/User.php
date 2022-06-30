@@ -10,12 +10,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-<<<<<<< HEAD
-#[ApiResource]
-class User 
-=======
 class User implements UserInterface, PasswordAuthenticatedUserInterface
->>>>>>> 8a762c58bf5bbe10ac9405b299880aeb5c759f93
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
