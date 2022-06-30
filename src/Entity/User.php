@@ -26,6 +26,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $firstName;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $lastName;
+
     #[ORM\ManyToOne(targetEntity: Agency::class, inversedBy: 'users')]
     private $agency;
 
@@ -198,6 +204,46 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $project->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstName
+     */ 
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set the value of firstName
+     *
+     * @return  self
+     */ 
+    public function setFirstName($firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastName
+     */ 
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */ 
+    public function setLastName($lastName): self
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }

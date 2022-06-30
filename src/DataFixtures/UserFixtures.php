@@ -21,14 +21,18 @@ class UserFixtures extends Fixture
     {
         $admin = new User();
         $admin->setEmail('admin@upside.com');
+        $admin->setFirstname('Admin');
+        $admin->setLastname('Admin');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordHasher->hashPassword($admin, 'password'));
-        // $admin->setAgency($this->getReference(['agency']));
+        $admin->setAgency($this->getReference('agency_Bordeaux'));
         $manager->persist($admin);
         $manager->flush();
 
         $user = new User();
         $user->setEmail('user@upside.com');
+        $user->setFirstname('User');
+        $user->setLastname('User');
         $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
         $manager->persist($user);
         $manager->flush();
