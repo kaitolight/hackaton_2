@@ -17,7 +17,7 @@ function Main() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<FilterProjects />} />
+        <Route path="/filter-projects" element={<FilterProjects />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/createProjet" element={<CreateProjet />} />
         <Route path="/tests" element={<Tests />} />

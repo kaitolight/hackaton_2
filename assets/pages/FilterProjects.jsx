@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Nav from "../components/nav/Nav";
-import FeedRSS from "../components/FeedRSS";
 import Person from "../components/UserInfo/person.jpg";
 import "../styles/FilterProjects.css";
 import "../styles/FeedRSS.css";
@@ -53,6 +52,7 @@ function FilterProjects() {
   const [themes, setThemes] = useState("");
   const [dates, setDates] = useState("");
   const [words, setWords] = useState("");
+  const [titles, setTitles] = useState("");
 
   const handleAgencies = (e) => {
     setAgencies(e.target.value);
@@ -65,6 +65,9 @@ function FilterProjects() {
   };
   const handleWords = (e) => {
     setWords(e.target.value);
+  };
+  const handleTitles = (e) => {
+    setTitles(e.target.value);
   };
 
   return (
@@ -102,7 +105,12 @@ function FilterProjects() {
             />
           </div>
           <div className="flex-top-container">
-            <h2 className="filter-title">Status</h2>
+            <h2 className="filter-title">Title</h2>
+            <input
+              placeholder="Search a title"
+              className="filter-input"
+              onChange={handleTitles}
+            />
           </div>
         </div>
         <div className="filter-bottom-flex">
@@ -123,12 +131,11 @@ function FilterProjects() {
               {fake
                 .filter(
                   (elem) =>
-                    (elem.agency.includes(agencies) &&
-                      elem.category.includes(themes) &&
-                      elem.date.includes(dates) &&
-                      elem.title.includes(words)) ||
-                    elem.desc.includes(words) ||
-                    elem.author.includes(words)
+                    elem.agency.includes(agencies) &&
+                    elem.category.includes(themes) &&
+                    elem.date.includes(dates) &&
+                    elem.title.includes(titles) &&
+                    elem.desc.includes(words)
                 )
                 .map((data) => (
                   <div className="feed-project-container" key={data.id}>
