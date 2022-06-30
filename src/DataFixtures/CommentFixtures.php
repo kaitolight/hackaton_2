@@ -11,7 +11,14 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
 {
     public const COMMENTS = [
         ['message' => 'Super! Nous allons prochainement réaliser un projet similaire pour l\'un de nos clients', 
-        'project' => 'project_Conseil en organisation dans l\'assurance',]
+        'project' => 'project_Conseil en organisation dans l\'assurance',],
+        ['message' => 'Super! Nous allons prochainement réaliser un projet similaire pour l\'un de nos clients', 
+        'project' => 'project_Conseil en organisation dans l\'assurance',],
+        ['message' => 'Super! Nous allons prochainement réaliser un projet similaire pour l\'un de nos clients', 
+        'project' => 'project_Conseil en organisation dans l\'assurance',],
+        ['message' => 'Super! Nous allons prochainement réaliser un projet similaire pour l\'un de nos clients', 
+        'project' => 'project_Conseil en organisation dans l\'assurance',],
+
     ];
 
     public function load(ObjectManager $manager): void

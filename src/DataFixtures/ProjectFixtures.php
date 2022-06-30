@@ -18,6 +18,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => true,
         'category' => 'category_Conseil',
         'agency' => 'agency_Bordeaux',
+        'user' => 'user_JF'
         ],
 
         ['name' => 'La conception UX pour application desktop',
@@ -27,6 +28,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => false,
         'category' => 'category_Infrastructure',
         'agency' => 'agency_Nice',
+        'user' => 'user_Antho'
         ]
     ];
 
@@ -42,7 +44,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project->setStatus($projectName['status']);
             $project->setCategory($this->getReference($projectName['category']));
             $project->setAgency($this->getReference($projectName['agency']));
-            // $project->setUser($this->getReference($projectName['user']));
+            $project->setUser($this->getReference($projectName['user']));
             // $project->setUser($projectName['user']);
             $manager->persist($project);
             $this->addReference('project_' . $projectName['name'], $project);
