@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import "./createProjet.css";
 import Nav from "../../components/nav/Nav";
 import API from "../../API";
@@ -34,7 +35,7 @@ function CreateProjet() {
     category: "",
     agency: "",
     status: 0,
-    user: "api/users/1",
+    user: "api/users/10",
   }
   );
   const handleChange = (e) => {

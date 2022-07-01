@@ -18,14 +18,14 @@ function Nav() {
         <Link to="/filter-projects" className="othersButtons">
           <h1>FILTER PROJECTS</h1>
         </Link>
-        <Link to="/UserDashboard" className="othersButtons">
-          <h1>SEARCH A PROJECT</h1>
+        <Link to="/myProjects" className="othersButtons">
+          <h1>MY PROJECTS</h1>
         </Link>
         <Link to="/createProjet" className="othersButtons">
           <h1>CREATE A PROJECT</h1>
         </Link>
         <Link to="/" className="othersButtons" onClick={handleLogout}>
-          <h1>Logout</h1>
+          <h1>LOUGOUT</h1>
         </Link>
       </div>
       <p>Made with 🧡 by SYMREACT's team </p>
