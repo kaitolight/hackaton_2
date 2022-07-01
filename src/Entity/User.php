@@ -46,7 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $agency;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class)]
-    #[Groups(['read:project'])]
     private $comment;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Project::class)]

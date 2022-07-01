@@ -20,6 +20,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => true,
         'category' => 'category_Conseil',
         'agency' => 'agency_Bordeaux',
+        'user' => 'user_JF'
         ],
 
         ['name' => 'La conception UX pour application desktop',
@@ -29,6 +30,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => false,
         'category' => 'category_Infrastructure',
         'agency' => 'agency_Nice',
+        'user' => 'user_Antho'
         ],
 
         ['name' => 'Task Force de traitement de masse pour S2E',
@@ -38,6 +40,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => true,
         'category' => 'category_Academy',
         'agency' => 'agency_Paris',
+        'user' => 'user_Loris'
         ],
 
         ['name' => 'Transformation d’un centre de préparation pour Système U',
@@ -47,6 +50,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => true,
         'category' => 'category_Ingénierie des Systèmes',
         'agency' => 'agency_Strasbourg',
+        'user' => 'user_Julien'
         ],
 
         ['name' => 'Le conseil et l’expertise dans le domaine des tests et de la qualité logicielle',
@@ -56,13 +60,13 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'status' => true,
         'category' => 'category_Ingénierie Industrielle',
         'agency' => 'agency_Brest',
+        'user' => 'user_JF'
         ],
     ];
 
 
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create();
         foreach (self::PROJECTS as $projectName) {
             $project = new Project();
             $project->setName($projectName['name']);
@@ -72,9 +76,10 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project->setStatus($projectName['status']);
             $project->setCategory($this->getReference($projectName['category']));
             $project->setAgency($this->getReference($projectName['agency']));
-            //$project->setUser($this->getReference('user_' . rand(1,2)));
+            $project->setUser($this->getReference($projectName['user']));
+            // $project->setUser($this->getReference('user_' . rand(1,2)));
             // $project->setUser($projectName['user']);
-            //$project->setUser($this->getReference(self::PROJECTS[rand(1, count(self::PROJECTS) -1)]['user']));
+            // $project->setUser($this->getReference(self::PROJECTS[rand(1, count(self::PROJECTS) -1)]['user']));
             $manager->persist($project);
             $this->addReference('project_' . $projectName['name'], $project);
         }
@@ -88,7 +93,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         return [
         CategoryFixtures::class,
         AgencyFixtures::class,
-
+        UserFixtures::class
         ];
     }
 }
