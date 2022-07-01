@@ -1,59 +1,32 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./userDashboard.css";
 import Nav from "../../components/nav/Nav";
-import FeedRSS from "../../components/FeedRSS"
+
+import FeedRSS from "../../components/FeedRSS";
 
 function UserDashboard() {
-  const [projets, setProjets] = useState([{
-    id:1,
-    name: "Les avocats chinois . ,",
-    description: "Assotiation des avocats, en lutte pour une meilleur porduction des avocats d'origine chinois",
-    createdAt: "30/06/2022",
-    endedAt: "",
-    status: "todo",
-    categoriy_id: 1,
-    agency_id: 1, 
-  },
-  {
-    id:1,
-    name: "Les avocats chinois . ,",
-    description: "Assotiation des avocats, en lutte pour une meilleur porduction des avocats d'origine chinois",
-    createdAt: "30/06/2022",
-    endedAt: "",
-    status: "todo",
-    categoriy_id: 1,
-    agency_id: 1, 
-  },
-  {
-    id:1,
-    name: "Les avocats chinois . ,",
-    description: "Assotiation des avocats, en lutte pour une meilleur porduction des avocats d'origine chinois",
-    createdAt: "30/06/2022",
-    endedAt: "",
-    status: "todo",
-    categoriy_id: 1,
-    agency_id: 1, 
-  },
-{
-    id:1,
-    name: "Les avocats chinois . ,",
-    description: "Assotiation des avocats, en lutte pour une meilleur porduction des avocats d'origine chinois",
-    createdAt: "30/06/2022",
-    endedAt: "",
-    status: "todo",
-    categoriy_id: 1,
-    agency_id: 1, 
-  }]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      navigate("/userDashboard");
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div id="userDashboardContainer">
       <Nav />
       <div className="allProjetsContainer">
-        <FeedRSS />
+        <div className="feed-outer-flex">
+          <FeedRSS />
+        </div>
       </div>
-      <div className="viewProjet">
-      </div>
+      <div className="viewProjet"></div>
     </div>
   );
 }
 
-export default UserDashboard
+export default UserDashboard;

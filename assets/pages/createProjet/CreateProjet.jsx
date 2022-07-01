@@ -51,12 +51,25 @@ function CreateProjet() {
       .then((res) => console.log(res))
       .catch(console.log("Error to save the projet"));
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      navigate("/createProjet");
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div id="createProjetPageContainer">
       <Nav />
       <div className="createProjetContainer">
         <form className="createProjetForm" onSubmit={saveProjet}>
-          <h1 className="titleCreateProjet">Complete this form to create your project</h1>
+          <h1 className="titleCreateProjet">
+            Complete this form to create your project
+          </h1>
           <p>What's name of your project ?</p>
           <input
             placeholder="Write here..."
@@ -73,17 +86,22 @@ function CreateProjet() {
           />
           <section>
             <div>
-              <p className="labelCreateProjet">When does your project start ?</p>
+              <p className="labelCreateProjet">
+                When does your project start ?
+              </p>
               <input
                 type="date"
-                min="2000-01-01" max="2050-12-31"
+                min="2000-01-01"
+                max="2050-12-31"
                 className="inputCreateProjet littles"
                 name="createdAt"
                 onChange={handleChange}
               />
             </div>
             <div>
-              <p className="labelCreateProjet">Select a category for your project</p>
+              <p className="labelCreateProjet">
+                Select a category for your project
+              </p>
               <select
               className="inputCreateProjet littles"
                 name="category"
@@ -107,12 +125,14 @@ function CreateProjet() {
               </select>
           </div>
           </section>
-          
-          <button type="submit" className="submitButtonCreateProjet">Go to work</button>
+
+          <button type="submit" className="submitButtonCreateProjet">
+            Go to work
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-export default CreateProjet
+export default CreateProjet;
