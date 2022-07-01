@@ -3,10 +3,12 @@
 namespace App\DataFixtures;
 
 use DateTime;
+use Faker\Factory;
 use App\Entity\Project;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
 
 class ProjectFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -29,7 +31,37 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'category' => 'category_Infrastructure',
         'agency' => 'agency_Nice',
         'user' => 'user_Antho'
-        ]
+        ],
+
+        ['name' => 'Task Force de traitement de masse pour S2E',
+        'description' => 'Elle doit faire face à une évolution de la loi qui va lui générer un flux de dossiers très important à court terme, pour une durée maximum de 2 ans,',
+        'created_at' => '2022-07-13',
+        'ended_at' => '2022-07-13',
+        'status' => true,
+        'category' => 'category_Academy',
+        'agency' => 'agency_Paris',
+        'user' => 'user_Loris'
+        ],
+
+        ['name' => 'Transformation d’un centre de préparation pour Système U',
+        'description' => 'U-IRIS assure la gestion de tout l’informatique du groupement U, tant au niveau logiciel que matériel.',
+        'created_at' => '2022-08-10',
+        'ended_at' => '2022-08-10',
+        'status' => true,
+        'category' => 'category_Ingénierie des Systèmes',
+        'agency' => 'agency_Strasbourg',
+        'user' => 'user_Julien'
+        ],
+
+        ['name' => 'Le conseil et l’expertise dans le domaine des tests et de la qualité logicielle',
+        'description' => 'La mission des équipes d’Apside consiste à mettre en œuvre des méthodes et des solutions pour tester les applications que la DSN met à disposition de ses usagers internes ou externes',
+        'created_at' => '2022-09-10',
+        'ended_at' => '2022-09-10',
+        'status' => true,
+        'category' => 'category_Ingénierie Industrielle',
+        'agency' => 'agency_Brest',
+        'user' => 'user_JF'
+        ],
     ];
 
 
@@ -45,7 +77,9 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             $project->setCategory($this->getReference($projectName['category']));
             $project->setAgency($this->getReference($projectName['agency']));
             $project->setUser($this->getReference($projectName['user']));
+            // $project->setUser($this->getReference('user_' . rand(1,2)));
             // $project->setUser($projectName['user']);
+            // $project->setUser($this->getReference(self::PROJECTS[rand(1, count(self::PROJECTS) -1)]['user']));
             $manager->persist($project);
             $this->addReference('project_' . $projectName['name'], $project);
         }

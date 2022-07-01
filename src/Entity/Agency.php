@@ -19,6 +19,7 @@ class Agency
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:agency', 'read:project', 'get:user'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 155)]
