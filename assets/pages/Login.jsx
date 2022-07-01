@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleDefault = (e) => {
     e.preventDefault();
@@ -14,6 +16,11 @@ function Login() {
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleRedirect = () => {
+    window.localStorage.setItem("isUserLoggedIn", true);
+    navigate("/userDashboard");
   };
 
   return (
@@ -38,7 +45,9 @@ function Login() {
               onChange={handlePassword}
             />
             <div className="button-flex">
-              <button className="login-button">Login</button>
+              <button className="login-button" onClick={handleRedirect}>
+                Login
+              </button>
             </div>
           </form>
         </div>

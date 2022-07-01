@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 function Tests() {
-  return <div className="hello"></div>
+  return <div className="hello"></div>;
 }
 
-export default Tests
+export default Tests;

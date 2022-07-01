@@ -1,0 +1,89 @@
+.filter-page {
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.filter-desc {
+    margin-left: 20%; 
+    width: 80%;
+    height: 100vh; 
+}
+
+.filter-flex {
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+}
+
+.filter-top-flex {
+    display: flex; 
+    width: 100%; 
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    justify-content: space-around;
+
+}
+
+.filter-bottom-flex {
+    display: flex; 
+    width: 100%; 
+    margin-left: 2.3rem;
+    margin-bottom: 2rem;
+    justify-content: space-around;
+}
+
+.flex-top-container {
+    width: 22%; 
+    height: 150px; 
+    background-color: var(--color-2);
+}
+
+.flex-bottom-container {
+    width: 28.5%; 
+    height: 200px; 
+    background-color: var(--color-2)
+}
+
+.flex-component-container {
+    width: 100%; 
+}
+
+.filter-title {
+    font-weight: bold; 
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-3); 
+    padding: 1rem;
+}
+
+.filter-input {
+    width: 70%; 
+    margin: 1rem;
+    border: none; 
+    border-bottom: 1.5px solid #183650; 
+    background-color: #e79759;
+    color: var(--color-3);
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.filter-select {
+    width: 70%; 
+    margin: 1rem;
+}
+
+.filter-input:focus {
+    outline: none;
+}
+
+.filter-input::placeholder {
+    color: var(--color-1);
+}
+
+.feed-project-container {
+    width: 90%; 
+    height: auto; 
+    background-color: var(--color-2);
+    margin-bottom: 1rem;
+}
