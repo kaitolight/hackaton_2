@@ -14,18 +14,18 @@ function UserInfo() {
     position: "Tech Lead JS",
     id: "",
   });
-  useEffect(() => {
-    API
-      .get("/api/user/:id", { withCredentials: true })
-      .then((res) => res.dataUser)
-      .then((dataUser) => setUser({
-        name: dataUser.name,
-        lastname: dataUser.lastname,
-        agency: dataUser.agency,
-        position: dataUser.position,
-        id: dataUser.id,
-      }))
-  }, [user]);
+  // useEffect(() => {
+  //   API
+  //     .get("/api/user/:id")
+  //     .then((res) => console.log(res.dataUser))
+  //     .then((dataUser) => setUser({
+  //       name: dataUser.name,
+  //       lastname: dataUser.lastname,
+  //       agency: dataUser.agency,
+  //       position: dataUser.position,
+  //       id: dataUser.id,
+  //     }))
+  // }, [user]);
   const handleChange = (e) => {
     setUser({
       ...user,

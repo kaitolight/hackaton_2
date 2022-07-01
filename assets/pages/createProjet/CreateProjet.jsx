@@ -1,10 +1,23 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./createProjet.css";
 import Nav from "../../components/nav/Nav";
 import API from "../../API";
 
 function CreateProjet() {
-  const categories = ["Digital Transformation", "IT Engineering", "IT Infrastructure", "IT Consultins", "Industrial Engineering", "Traning"]
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    API
+      .get("/api/categories")
+      .then((res) => setCategories(res.data))
+      .catch(console.log("Error to save the projet"));
+  }, []);
+  console.log(categories)
+
+
+
+
+
+
   const [newprojet, setNewprojet] = useState({
     name: "",
     description: "",
@@ -19,11 +32,12 @@ function CreateProjet() {
       [e.target.name]: e.target.value,
     });
   };
+  console.log(newprojet);
   const saveProjet = (event) => {
     event.preventDefault();
     API
-      .post("/api/xxxxxx", newprojet, { withCredentials: true })
-      .then((res) => res.data)
+      .post("/api/projects", newprojet)
+      .then((res) => console.log(res))
       .catch(console.log("Error to save the projet"));
   };
   return (
@@ -65,8 +79,8 @@ function CreateProjet() {
                 onChange={handleChange}>
                 <option value="">Choose a category</option>
                 
-                {categories.map((category) => 
-                <option value={category}>{category}</option>)}
+                {categories.map((category, i) => 
+                <option key={i} value={JSON.stringify(category)}>{category.name}</option>)}
               </select>
             </div>
             <div>
