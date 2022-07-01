@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['get:user'])]
+    #[Groups(['get:user', 'read:project'])]
     private string $firstName;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -52,7 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $projects;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    
     #[Groups(['get:user'])]
     private $position;
 
