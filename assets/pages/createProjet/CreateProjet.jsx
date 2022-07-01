@@ -11,7 +11,16 @@ function CreateProjet() {
       .then((res) => setCategories(res.data))
       .catch(console.log("Error to save the projet"));
   }, []);
-  console.log(categories)
+  // console.log(categories)
+
+  const [agencies, setAgencies] = useState([]);
+  useEffect(() => {
+    API
+      .get("/api/agencies")
+      .then((res) => setAgencies(res.data))
+      .catch(console.log("Error to save the projet"));
+  }, []);
+  // console.log(agencies)
 
 
 
@@ -22,8 +31,10 @@ function CreateProjet() {
     name: "",
     description: "",
     createdAt: "",
-    category_id: "",
-    agency_id: "",
+    category: "",
+    agency: "",
+    status: 0,
+    user: "api/users/1",
   }
   );
   const handleChange = (e) => {
@@ -32,7 +43,7 @@ function CreateProjet() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(newprojet);
+  // console.log(newprojet);
   const saveProjet = (event) => {
     event.preventDefault();
     API
@@ -75,22 +86,25 @@ function CreateProjet() {
               <p className="labelCreateProjet">Select a category for your project</p>
               <select
               className="inputCreateProjet littles"
-                name="category_id"
+                name="category"
                 onChange={handleChange}>
                 <option value="">Choose a category</option>
                 
                 {categories.map((category, i) => 
-                <option key={i} value={JSON.stringify(category)}>{category.name}</option>)}
+                <option key={i} value={"api/categories/" + category.id}>{category.name}</option>)}
               </select>
             </div>
             <div>
           <p className="labelCreateProjet">Which agency does your project depend?</p>
-          <input
-            placeholder="Write here..."
-            className="agency_idCreateProjet inputCreateProjet littles"
-            name="agency_id"
-            onChange={handleChange}
-          />
+          <select
+              className="inputCreateProjet littles"
+                name="agency"
+                onChange={handleChange}>
+                <option value="">Choose an agency_id</option>
+                
+                {agencies.map((agency, i) => 
+                <option key={i} value={"api/agencies/" + agency.id}>{agency.name}</option>)}
+              </select>
           </div>
           </section>
           

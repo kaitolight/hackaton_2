@@ -8,24 +8,20 @@ function UserInfo() {
   const [goToParams, setGoToParams] = useState(true);
 
   const [user, setUser] = useState({
-    name: "Elvis",
-    lastname: "PRESLEY",
+    firstName: "Elvis",
+    lastName: "PRESLEY",
     agency: "Lyon",
     position: "Tech Lead JS",
+    email:"mail@mail.com",
     id: "",
   });
-  // useEffect(() => {
-  //   API
-  //     .get("/api/user/:id")
-  //     .then((res) => console.log(res.dataUser))
-  //     .then((dataUser) => setUser({
-  //       name: dataUser.name,
-  //       lastname: dataUser.lastname,
-  //       agency: dataUser.agency,
-  //       position: dataUser.position,
-  //       id: dataUser.id,
-  //     }))
-  // }, [user]);
+  useEffect(() => {
+    API
+      .get("/api/users/1")
+      .then((res) => console.log(res.data))
+  }, []);
+
+  // console.warn(user);
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -34,9 +30,8 @@ function UserInfo() {
   };
   const handleLogin = (event) => {
     event.preventDefault();
-    console.warn(user);
     API
-      .post("/api/auth/login", user, { withCredentials: true })
+      .put("/api/users/2", user)
       .then((res) => res.data)
       .catch(console.log("Error to save"));
   };
@@ -46,9 +41,10 @@ function UserInfo() {
         <div className="containerButton"><button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button></div>
         <span><img src={person} /></span>
         <div className="textInfoUser">
-          <strong>{user.name} {user.lastname}</strong>
-          <p>{user.agency}</p>
+          <strong>{user.firstName} {user.lastName}</strong>
+          <p>{user.agency.name}</p>
           <p>{user.position}</p>
+          <p>{user.email}</p>
         </div>
       </div>
     );
@@ -58,10 +54,11 @@ function UserInfo() {
       <div className="containerButton"><button className="button" onClick={() => setGoToParams(!goToParams)}><img src={icon} /></button></div>
       <span><img src={person} /></span>
       <form className="formParamsInfoUser" onSubmit={handleLogin}>
-        <input className="inputInfoUser" name="name" placeholder={user.name} onChange={handleChange} />
-        <input className="inputInfoUser" name="lastname" placeholder={user.lastname} onChange={handleChange} />
-        <input className="inputInfoUser" name="agency" placeholder={user.agency} onChange={handleChange} />
+        <input className="inputInfoUser" name="firstName" placeholder={user.firstName} onChange={handleChange} />
+        <input className="inputInfoUser" name="lastName" placeholder={user.lastName} onChange={handleChange} />
+        <input className="inputInfoUser" name="agency" placeholder={user.agency.name} onChange={handleChange} />
         <input className="inputInfoUser" name="position" placeholder={user.position} onChange={handleChange} />
+        <input className="inputInfoUser" name="email" placeholder={"email"} onChange={handleChange} />
         <input type="submit" value="Save" className="inputInfoUser buttonSubmitInfoUser" />
       </form>
     </div>
