@@ -38,6 +38,7 @@ class Project
     private $endedAt;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['read:project', 'get:user'])]
     private $status;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
