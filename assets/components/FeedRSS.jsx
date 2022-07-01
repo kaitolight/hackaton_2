@@ -7,6 +7,7 @@ import "../styles/FeedRSS.css";
 
 function FeedRSS() {
   const [newProject, setNewProject] = useState([]);
+  console.log(newProject);
 
   useEffect(() => {
     axios
@@ -15,10 +16,6 @@ function FeedRSS() {
       .catch((err) => console.log(err));
   }, []);
 
-  // const handleComments = (item) => {
-  //   comments.find((comment) => setCommentList(comment.project_id === item.id));
-  // };
-
   return (
     <>
       <div className="feed-outer-flex">
@@ -26,7 +23,7 @@ function FeedRSS() {
           <div className="feed-container" key={data.id}>
             <div className="feed-flex">
               <img src={Person} alt={data.author} className="feed-img" />
-              <h2 className="feed-title">Blabla</h2>
+              <h2 className="feed-title">{data.user.firstName}</h2>
               <div className="flex-category">
                 <h2 className="feed-title">
                   From {data.agency.name}, in {data.category.name}
@@ -36,19 +33,14 @@ function FeedRSS() {
             <div className="flex-desc">
               <div className="feed-desc">
                 <h2 className="desc-title">
-                  Author, launched{" "}
+                  {data.name}, launched in{" "}
                   {moment(data.createdAt).format("MMMM Do YYYY")}
                 </h2>
                 <p className="desc-text">{data.description}</p>
               </div>
             </div>
             <div className="flex-button">
-              <button
-                // onClick={() => handleComments(data)}
-                className="comment-button"
-              >
-                View comments
-              </button>
+              <button className="comment-button">View comments</button>
             </div>
           </div>
         ))}

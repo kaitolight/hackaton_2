@@ -132,7 +132,7 @@ function FilterProjects() {
                         alt={data.author}
                         className="feed-img"
                       />
-                      <h2 className="feed-title">Blabla</h2>
+                      <h2 className="feed-title">{data.user.firstName}</h2>
                       <div className="flex-category">
                         <h2 className="feed-title">
                           From {data.agency.name}, in {data.category.name}
