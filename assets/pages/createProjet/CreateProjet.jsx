@@ -1,35 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"
 import "./createProjet.css";
 import Nav from "../../components/nav/Nav";
 import API from "../../API";
 
 function CreateProjet() {
-  const categories = [
-    "Digital Transformation",
-    "IT Engineering",
-    "IT Infrastructure",
-    "IT Consultins",
-    "Industrial Engineering",
-    "Traning",
-  ];
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    API
+      .get("/api/categories")
+      .then((res) => setCategories(res.data))
+      .catch(console.log("Error to save the projet"));
+  }, []);
+  // console.log(categories)
+
+  const [agencies, setAgencies] = useState([]);
+  useEffect(() => {
+    API
+      .get("/api/agencies")
+      .then((res) => setAgencies(res.data))
+      .catch(console.log("Error to save the projet"));
+  }, []);
+  // console.log(agencies)
+
+
+
+
+
+
   const [newprojet, setNewprojet] = useState({
     name: "",
     description: "",
     createdAt: "",
-    category_id: "",
-    agency_id: "",
-  });
+    category: "",
+    agency: "",
+    status: 0,
+    user: "api/users/1",
+  }
+  );
   const handleChange = (e) => {
     setNewprojet({
       ...newprojet,
       [e.target.name]: e.target.value,
     });
   };
+  // console.log(newprojet);
   const saveProjet = (event) => {
     event.preventDefault();
-    API.post("/api/xxxxxx", newprojet, { withCredentials: true })
-      .then((res) => res.data)
+    API
+      .post("/api/projects", newprojet)
+      .then((res) => console.log(res))
       .catch(console.log("Error to save the projet"));
   };
 
@@ -84,28 +103,27 @@ function CreateProjet() {
                 Select a category for your project
               </p>
               <select
-                className="inputCreateProjet littles"
-                name="category_id"
-                onChange={handleChange}
-              >
+              className="inputCreateProjet littles"
+                name="category"
+                onChange={handleChange}>
                 <option value="">Choose a category</option>
-
-                {categories.map((category) => (
-                  <option value={category}>{category}</option>
-                ))}
+                
+                {categories.map((category, i) => 
+                <option key={i} value={"api/categories/" + category.id}>{category.name}</option>)}
               </select>
             </div>
             <div>
-              <p className="labelCreateProjet">
-                Which agency does your project depend?
-              </p>
-              <input
-                placeholder="Write here..."
-                className="agency_idCreateProjet inputCreateProjet littles"
-                name="agency_id"
-                onChange={handleChange}
-              />
-            </div>
+          <p className="labelCreateProjet">Which agency does your project depend?</p>
+          <select
+              className="inputCreateProjet littles"
+                name="agency"
+                onChange={handleChange}>
+                <option value="">Choose an agency_id</option>
+                
+                {agencies.map((agency, i) => 
+                <option key={i} value={"api/agencies/" + agency.id}>{agency.name}</option>)}
+              </select>
+          </div>
           </section>
 
           <button type="submit" className="submitButtonCreateProjet">
