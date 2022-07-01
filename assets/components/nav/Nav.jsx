@@ -1,9 +1,13 @@
 import React from "react";
 import UserInfo from "../UserInfo/UserInfo";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./nav.css";
 
 function Nav() {
+  const handleLogout = () => {
+    window.localStorage.removeItem("isUserLoggedIn");
+  };
+
   return (
     <div id="navContainer">
       <Link to="/UserDashboard" className="buttonHome">
@@ -19,6 +23,9 @@ function Nav() {
         </Link>
         <Link to="/createProjet" className="othersButtons">
           <h1>CREATE A PROJECT</h1>
+        </Link>
+        <Link to="/" className="othersButtons" onClick={handleLogout}>
+          <h1>Logout</h1>
         </Link>
       </div>
       <p>Made with 🧡 by SYMREACT's team </p>

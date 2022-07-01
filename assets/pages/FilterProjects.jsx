@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 
@@ -49,6 +50,16 @@ function FilterProjects() {
       .get("http://localhost:8000/api/projects")
       .then((res) => setNewProject(res.data))
       .catch((err) => console.log(err));
+  }, []);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      navigate("/filter-projects");
+    } else {
+      navigate("/");
+    }
   }, []);
 
   return (

@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./userDashboard.css";
 import Nav from "../../components/nav/Nav";
-import moment from "moment";
 
-import Person from "../../components/UserInfo/person.jpg";
 import FeedRSS from "../../components/FeedRSS";
 
 function UserDashboard() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("isUserLoggedIn"))) {
+      navigate("/userDashboard");
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div id="userDashboardContainer">
       <Nav />
@@ -15,18 +24,7 @@ function UserDashboard() {
           <FeedRSS />
         </div>
       </div>
-      <div className="viewProjet">
-        {/* {commentList.map((data) => (
-          <div className="comment-container">
-            <h2 className="comment-title">By {data.author}</h2>
-            <div className="message-flex">
-              <div className="comment-message">
-                <p className="comment-text">${data.message}</p>
-              </div>
-            </div>
-          </div>
-        ))} */}
-      </div>
+      <div className="viewProjet"></div>
     </div>
   );
 }
