@@ -21,7 +21,6 @@ function Main() {
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/createProjet" element={<CreateProjet />} />
         <Route path="/myProjects" element={<MyProjects />} />
-        <Route path="/tests" element={<Tests />} />
       </Routes>
     </Router>
   );

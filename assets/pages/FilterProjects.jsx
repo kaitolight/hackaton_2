@@ -132,7 +132,7 @@ function FilterProjects() {
                         alt={data.author}
                         className="feed-img"
                       />
-                      <h2 className="feed-title">Blabla</h2>
+                      <h2 className="feed-title">{data.user.firstName}</h2>
                       <div className="flex-category">
                         <h2 className="feed-title">
                           From {data.agency.name}, in {data.category.name}
@@ -142,7 +142,7 @@ function FilterProjects() {
                     <div className="flex-desc">
                       <div className="feed-desc">
                         <h2 className="desc-title">
-                          Author, launched{" "}
+                          {data.name}, launched in{" "}
                           {moment(data.createdAt).format("MMMM Do YYYY")}
                         </h2>
                         <p className="desc-text">{data.description}</p>
