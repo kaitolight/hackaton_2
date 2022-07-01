@@ -1,0 +1,57 @@
+#userDashboardContainer{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+}
+#userDashboardContainer .allProjetsContainer{
+    width: 50%;
+    margin-left: 20%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+}
+#userDashboardContainer .viewProjet{
+    background-color:var(--color-1);
+    height:calc(100vh - 2rem);
+    width:30%;
+    position:fixed;
+    right:0;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.comment-container {
+    width: 30%; 
+    height: auto; 
+    background-color: var(--color-2);
+}
+
+.comment-title {
+    font-weight: bold; 
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-3);
+    padding: 1rem;
+    width: 100%;
+}
+
+.message-flex {
+    display: flex; 
+    justify-content: center;
+}
+
+.comment-message {
+    width: 95%; 
+    height: auto; 
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-top: 1px solid var(--color-1); 
+    border-bottom: 1px solid var(--color-1); 
+}
+
+.comment-text {
+    font-family: "Hind", sans-serif; 
+    color: var(--color-3);
+}
