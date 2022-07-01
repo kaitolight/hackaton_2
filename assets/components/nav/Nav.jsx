@@ -21,7 +21,7 @@ function Nav() {
           <h1>CREATE A PROJECT</h1>
         </Link>
       </div>
-      <p>Made with 🧡 by _'s team </p>
+      <p>Made with 🧡 by SYMREACT's team </p>
     </div>
   );
 }
