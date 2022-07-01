@@ -17,7 +17,6 @@ function FilterProjects() {
   const [getAgencies, setGetAgencies] = useState([]);
   const [getCategories, setGetCategories] = useState([]);
   const [newProject, setNewProject] = useState([]);
-  console.log(newProject);
 
   const handleAgencies = (e) => {
     setAgencies(e.target.value);
