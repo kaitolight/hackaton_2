@@ -19,7 +19,7 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    
+    #[Groups(['read:category','read:project'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 155)]
